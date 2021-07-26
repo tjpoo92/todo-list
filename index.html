@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo List</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ToDo List</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
 			rel="stylesheet"
@@ -19,23 +19,55 @@
 			crossorigin="anonymous"
 		/>
 		<link rel="shortcut icon" href="#" type="image/x-icon" />
-</head>
-<body>
-    <nav class="nav-bar"><ul><li class="add-task">FA Placeholder</li></ul></nav>
-    <div class="add-task-form hidden"></div>
-    <section class="side-bar"><div class="default-project">FA Default</div></section>
-    <main></main>
-    <footer>
-        <p>
-            This project was completed as part of
-            <a href="https://www.theodinproject.com/" target="_blank"
-                >The Odin Project</a
-            >
-            you can see more of my work on
-            <a href="https://github.com/tjpoo92/" target="_blank">GitHub</a>
-        </p>
-    </footer>
-    <script type ="module" src="main.js"></script>
-</body>
+	</head>
+	<body>
+		<nav class="nav-bar">
+			<ul>
+				<li class="logo">LOGO</li>
+				<li class="add-task">
+					<button class="add-task"><i class="far fa-plus-square"></i></button>
+				</li>
+			</ul>
+		</nav>
+		<div class="add-task-modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<form action="#" class="task-form">
+					Task Title: <input type="text" name="" id="" /> Task Description:
+					<input type="text" name="" id="" /> Due Date:
+					<input type="date" name="" id="" />
+					<button class="priority">Priority</button>
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
 
+		<main>
+			<section class="side-bar">
+				<div class="default-project">
+					<input
+						type="checkbox"
+						class="task-checkbox"
+						name="default"
+						id="default"
+					/>FA Default
+				</div>
+				<div class="completed-project">
+					<input
+						type="checkbox"
+						class="task-checkbox"
+						name="completed"
+						id="completed"
+					/>FA Completed
+				</div>
+			</section>
+			<section class="content">
+				<div class="sub-task">
+					<input type="checkbox" name="testing" id="testing" />Hello there
+				</div>
+			</section>
+		</main>
+
+		<script type="module" src="main.js"></script>
+	</body>
 </html>
