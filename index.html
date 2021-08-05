@@ -18,12 +18,20 @@
 			integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
 			crossorigin="anonymous"
 		/>
-		<link rel="shortcut icon" href="#" type="image/x-icon" />
+		<link
+			rel="shortcut icon"
+			href="/dist/images/favicon.ico"
+			type="image/x-icon"
+		/>
 	</head>
 	<body>
 		<nav class="nav-bar">
 			<ul>
-				<li class="logo">LOGO</li>
+				<li class="logo">
+					<i class="fas fa-tasks"></i>
+					<h1 class="logo-text">YouDo</h1>
+				</li>
+
 				<li class="add-task">
 					<button class="add-task"><i class="far fa-plus-square"></i></button>
 				</li>
@@ -32,40 +40,25 @@
 		<div class="add-task-modal">
 			<div class="modal-content">
 				<span class="close">&times;</span>
-				<form action="#" class="task-form">
-					Task Title: <input type="text" name="" id="" /> Task Description:
-					<input type="text" name="" id="" /> Due Date:
-					<input type="date" name="" id="" />
-					<button class="priority">Priority</button>
-					<button type="submit">Submit</button>
-				</form>
 			</div>
 		</div>
 
 		<main>
-			<section class="side-bar">
+			<section class="side-bar display">
 				<div class="default-project">
-					<input
-						type="checkbox"
-						class="task-checkbox"
-						name="default"
-						id="default"
-					/>FA Default
+					<i class="fas fa-thumbtack i-project"></i>
+					<p class="project">Default</p>
 				</div>
 				<div class="completed-project">
-					<input
-						type="checkbox"
-						class="task-checkbox"
-						name="completed"
-						id="completed"
-					/>FA Completed
+					<i class="fas fa-check i-project"></i>
+					<p class="project">Completed</p>
+				</div>
+				<div class="add-project">
+					<i class="fas fa-plus i-project"></i>
+					<p class="project">Add Project</p>
 				</div>
 			</section>
-			<section class="content">
-				<div class="sub-task">
-					<input type="checkbox" name="testing" id="testing" />Hello there
-				</div>
-			</section>
+			<section class="content"></section>
 		</main>
 
 		<script type="module" src="main.js"></script>
