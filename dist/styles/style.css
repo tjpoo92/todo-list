@@ -114,7 +114,7 @@ section.content > .sub-task {
 .sub-task > * {
 	display: inline;
 }
-.add-task-modal {
+.add-modal {
 	display: none;
 	position: fixed;
 	z-index: 1;
