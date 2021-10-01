@@ -66,6 +66,7 @@ section {
 section.side-bar {
 	border-right: 2px solid var(--dark);
 	width: 25px;
+	flex-shrink: 0;
 }
 div {
 	overflow: hidden;
@@ -109,6 +110,20 @@ form > button {
 }
 section.content > .sub-task {
 	margin: 20px 0 0 10px;
+	
+}
+div.sub-task-description > p{
+	margin: 20px 0 0 10px;
+}
+.sub-task {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.sub-task-due-date{
+	margin-left: auto;
+	color: var(--gray);
 }
 
 .sub-task > * {
@@ -173,6 +188,7 @@ h3 {
 .options,
 .trash {
 	color: var(--gray);
+	padding: 5px;
 }
 .options:hover,
 .trash:hover {
