@@ -19,6 +19,7 @@ addTaskButton.addEventListener("click", () => {
 
 addProjectButton.addEventListener("click", () => {
 	modal.style.display = "block";
+
 	addProjectForm();
 });
 
@@ -26,7 +27,10 @@ span.addEventListener("click", closeModal);
 
 function closeModal(){
 	modal.style.display = "none";
-	// FIXME: clearForm function
+	clearForm();
+};
+
+function clearForm() {
 	while (modalContent.hasChildNodes() && modalContent.lastChild !== span){
 		modalContent.removeChild(modalContent.lastChild)
 }}
@@ -35,8 +39,7 @@ const projects = document.querySelector(".fa-tasks");
 const sidebar = document.querySelector(".side-bar");
 const sidebarContent = document.querySelectorAll(".project");
 const projectIcons = document.querySelectorAll(".i-project");
-const subTask = document.querySelector("#sub-task");
-const subTaskText = document.querySelector(".sub-task-text");
+
 
 projects.addEventListener("click", () => {
 	collapseSidebar();
@@ -60,13 +63,7 @@ function collapseSidebar() {
 		}
 	}
 }
-// subTask.addEventListener("click", () => {
-// 	if (subTask.checked == true) {
-// 		subTaskText.style.textDecoration = "line-through";
-// 	} else {
-// 		subTaskText.style.textDecoration = "none";
-// 	}
-// });
+
 
 let taskArray = [];
 
@@ -109,7 +106,7 @@ const select = document.createElement("select")
 
 const Selector = function (priority){
 	const tempOption = document.createElement("option")
-	tempOption.setAttribute = ()=>("value", priority)
+	tempOption.setAttribute = () => ("value", priority)
 	tempOption.innerText= priority
 	select.appendChild(tempOption)
 	
@@ -133,7 +130,14 @@ form.addEventListener("submit", (event)=> {
 	closeModal()
 	displayTask(taskArray[taskArray.length == 0 ? 0 : taskArray.length - 1])
 })
+form.removeEventListener("submit", (event)=> {
+	submitAddTaskForm()
+	event.preventDefault()
+	closeModal()
+	displayTask(taskArray[taskArray.length == 0 ? 0 : taskArray.length - 1])
+})
 });
+
 function displayTask(taskToDisplay) {
 
 
@@ -143,7 +147,8 @@ function displayTask(taskToDisplay) {
 	const checkBox = document.createElement("input")
 	checkBox.setAttribute("type","checkbox")
 	checkBox.setAttribute("name","sub-task")
-	checkBox.setAttribute("id","sub-task")
+	// remove if not needed, shouldn't be using ID on generic created node
+	// checkBox.setAttribute("id","sub-task")
 	subTaskDiv.appendChild(checkBox)
 
 	const subTaskInfo = function (classDef, text){
@@ -171,11 +176,28 @@ function displayTask(taskToDisplay) {
 	content.appendChild(subTaskDesc)
 
 	const descP = document.createElement("p")
-	descP.innerText =taskToDisplay.formTextArea
+	descP.innerText = taskToDisplay.formTextArea
 	subTaskDesc.appendChild(descP)
 
+	// TODO GET THIS SHIT WORKING, UNDERLINING
+	// refactor into own function, add trash and setting functionality
+	// const subTask = document.querySelectorAll(".sub-task");
+	// const subTaskText = document.querySelectorAll(".sub-task-text");
+	// for (let i = 0; i < subTask.length; i++) {
+	// 	subTask[i].addEventListener("click", () => {
+	// 		console.log(subTask[i])
+	// if (subTask[i].checked == true) {
+	// 		subTaskText[i].style.textDecoration = "line-through";
+	// 	} else {
+	// 		subTaskText[i].style.textDecoration = "none";
+	// 	}
+	// 	});
+		
+	}
 
-}
+	
+	
+
 
 function submitAddTaskForm() {
 	
@@ -193,6 +215,8 @@ const newTask = addTaskFactory(formInputText, formTextArea, formDueDate,formPrio
 return taskArray.push(newTask)
 }
 
+let projectArray = [{formInputText: "Default"}]
+
 const addProjectForm = (() => {
 
 const form = document.createElement("form");
@@ -209,11 +233,64 @@ const inputText = document.createElement("input")
 	form.appendChild(inputText)
 		
 const button = document.createElement("button")
-	button.setAttribute("type","button")
+	button.setAttribute("type","submit")
 	button.classList.add("center")
 	button.innerText="Submit"
 	button.classList.add("submit-add-project")
 	form.appendChild(button)
 			
 modalContent.appendChild(form);
+
+form.addEventListener("submit", (event)=> {
+	submitAddProjectForm()
+	event.preventDefault()
+	closeModal()
+	displayProject(projectArray[projectArray.length == 0 ? 0 : projectArray.length - 1])
+})
 });
+
+function submitAddProjectForm() {
+	const formInputText = document.querySelector("#project-name").value;
+	
+	const addProjectFactory = (formInputText) => {
+		return {formInputText}
+	}
+
+	const newProject = addProjectFactory(formInputText)
+
+	return projectArray.push(newProject)
+}
+
+
+function displayProject(projectToDisplay) {
+
+	const projectLabel = document.createElement("label")
+
+
+	const projectInput = document.createElement("input")
+		projectInput.setAttribute("type","radio")
+		projectInput.setAttribute("name","radio-button")
+		projectInput.checked= true;
+		projectLabel.appendChild(projectInput)
+
+	const projectDiv = document.createElement("div")
+		projectLabel.appendChild(projectDiv)
+
+
+	//TODO Randomize icon that will be showing
+	// Put info in array then randomize index
+	const projectInfo = function (classDef, text){
+		const tempPara = document.createElement("p")
+		tempPara.classList.add(classDef)
+		tempPara.innerText = text
+		projectDiv.appendChild(tempPara)
+		
+	};
+	const pProjectText = new projectInfo("project",projectToDisplay.formInputText);
+
+	sidebar.insertBefore(projectLabel, addProjectButton)
+		console.table(projectArray)
+	}
+
+
+
