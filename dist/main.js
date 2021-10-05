@@ -3,50 +3,48 @@
 // Pushed object onto an array and displayed array
 
 
-const modal = document.querySelector(".add-modal");
-const addTaskButton = document.querySelector(".add-task")
-const span = document.querySelector("span");
-const addProjectButton =document.querySelector(".add-project")
-const modalContent = document.querySelector(".modal-content")
-const content = document.querySelector(".content")
+const modal = document.querySelector(".add-modal"); //moved to modal.js
+const addTaskButton = document.querySelector(".add-task") //moved to task-func.js
+const span = document.querySelector("span"); //moved to modal.js
+const addProjectButton =document.querySelector(".add-project") //moved to project-func.js
+const modalContent = document.querySelector(".modal-content") //moved to modal.js
+const content = document.querySelector(".content") //moved to task-func.js
 
 
-addTaskButton.addEventListener("click", () => {
+addTaskButton.addEventListener("click", () => { //moved to task-func.js
 	modal.style.display = "block";
 	addTaskForm();
-	
 });
 
-addProjectButton.addEventListener("click", () => {
+addProjectButton.addEventListener("click", () => { //moved to project-func.js
 	modal.style.display = "block";
-
 	addProjectForm();
 });
 
-span.addEventListener("click", closeModal);
+span.addEventListener("click", closeModal); //moved to modal.js
 
-function closeModal(){
+function closeModal(){ //moved to modal.js
 	modal.style.display = "none";
 	clearForm();
-};
+}; 
 
-function clearForm() {
+function clearForm() { //moved to modal.js
 	while (modalContent.hasChildNodes() && modalContent.lastChild !== span){
 		modalContent.removeChild(modalContent.lastChild)
 }}
 
-const projects = document.querySelector(".fa-tasks");
-const sidebar = document.querySelector(".side-bar");
+const projects = document.querySelector(".fa-tasks"); //moved to side-bar-func.js
+const sidebar = document.querySelector(".side-bar"); //moved to side-bar-func.js
 const sidebarContent = document.querySelectorAll(".project");
 const projectIcons = document.querySelectorAll(".i-project");
 
 
-projects.addEventListener("click", () => {
+projects.addEventListener("click", () => { //moved to side-bar-func.js
 	collapseSidebar();
 	sidebar.classList.toggle("display");
 });
 
-function collapseSidebar() {
+function collapseSidebar() { //moved to side-bar-func.js
 	if (sidebar.classList.contains("display")) {
 		for (let i = 0; i < sidebarContent.length; i++) {
 			sidebarContent[i].classList.add("hidden");
@@ -65,9 +63,9 @@ function collapseSidebar() {
 }
 
 
-let taskArray = [];
+let taskArray = []; //moved to add-task.js
 
-const addTaskForm = (() => {
+const addTaskForm = (() => { //moved to add-task.js
 
 const form = document.createElement("form");
 	form.setAttribute("action", "#")
@@ -138,7 +136,7 @@ form.removeEventListener("submit", (event)=> {
 })
 });
 
-function displayTask(taskToDisplay) {
+function displayTask(taskToDisplay) { //moved to task-func.js
 
 
 	const subTaskDiv = document.createElement("div")
@@ -199,7 +197,7 @@ function displayTask(taskToDisplay) {
 	
 
 
-function submitAddTaskForm() {
+function submitAddTaskForm() { //moved to add-task.js
 	
 const formInputText = document.querySelector("#task-name").value;
 const formTextArea = document.querySelector("#task-description").value;
@@ -215,9 +213,9 @@ const newTask = addTaskFactory(formInputText, formTextArea, formDueDate,formPrio
 return taskArray.push(newTask)
 }
 
-let projectArray = [{formInputText: "Default"}]
+let projectArray = [{formInputText: "Default"}] //moved to add-project.js
 
-const addProjectForm = (() => {
+const addProjectForm = (() => { //moved to add-project.js
 
 const form = document.createElement("form");
 	form.setAttribute("action", "#")
@@ -249,7 +247,7 @@ form.addEventListener("submit", (event)=> {
 })
 });
 
-function submitAddProjectForm() {
+function submitAddProjectForm() { //moved to add-project.js
 	const formInputText = document.querySelector("#project-name").value;
 	
 	const addProjectFactory = (formInputText) => {
@@ -262,7 +260,7 @@ function submitAddProjectForm() {
 }
 
 
-function displayProject(projectToDisplay) {
+function displayProject(projectToDisplay) { //moved to project-func.js
 
 	const projectLabel = document.createElement("label")
 
