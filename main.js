@@ -35,8 +35,8 @@ function clearForm() { //moved to modal.js
 
 const projects = document.querySelector(".fa-tasks"); //moved to side-bar-func.js
 const sidebar = document.querySelector(".side-bar"); //moved to side-bar-func.js
-const sidebarContent = document.querySelectorAll(".project");
-const projectIcons = document.querySelectorAll(".i-project");
+const sidebarContent = document.querySelectorAll(".project"); //moved to side-bar-func.js
+const projectIcons = document.querySelectorAll(".i-project"); //moved to side-bar-func.js
 
 
 projects.addEventListener("click", () => { //moved to side-bar-func.js
