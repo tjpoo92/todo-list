@@ -1,3 +1,6 @@
+import { closeModal, modalContent } from "./modal.js";
+import { displayTask } from "./task-func.js";
+
 let taskArray = [];
 
 const addTaskForm = (() => {
@@ -63,12 +66,6 @@ const addTaskForm = (() => {
         closeModal()
         displayTask(taskArray[taskArray.length == 0 ? 0 : taskArray.length - 1])
     })
-    form.removeEventListener("submit", (event)=> {
-        submitAddTaskForm()
-        event.preventDefault()
-        closeModal()
-        displayTask(taskArray[taskArray.length == 0 ? 0 : taskArray.length - 1])
-    })
     });
 
     function submitAddTaskForm() {
@@ -87,4 +84,4 @@ const addTaskForm = (() => {
         return taskArray.push(newTask)
         }
         
-        
+export {addTaskForm}

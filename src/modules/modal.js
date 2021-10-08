@@ -14,3 +14,4 @@ function clearForm() {
 		modalContent.removeChild(modalContent.lastChild)
 }}
 
+export {closeModal, modalContent}

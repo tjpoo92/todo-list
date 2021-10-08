@@ -1,14 +1,9 @@
-const addTaskButton = document.querySelector(".add-task")
-const content = document.querySelector(".content")
+import { addTaskForm } from "./add-task";
 
-addTaskButton.addEventListener("click", () => {
-	modal.style.display = "block";
-	addTaskForm();
-});
 
 function displayTask(taskToDisplay) {
 
-
+	const content = document.querySelector(".content")
 	const subTaskDiv = document.createElement("div")
 	subTaskDiv.classList.add("sub-task")
 
@@ -62,3 +57,4 @@ function displayTask(taskToDisplay) {
 	// 	});
 		
 	}
+	export{displayTask}

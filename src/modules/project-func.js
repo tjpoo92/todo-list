@@ -1,9 +1,4 @@
-const addProjectButton =document.querySelector(".add-project")
-
-addProjectButton.addEventListener("click", () => { 
-	modal.style.display = "block";
-	addProjectForm();
-});
+import { sidebar, addProjectButton } from "../index.js";
 
 function displayProject(projectToDisplay) {
 
@@ -32,5 +27,7 @@ function displayProject(projectToDisplay) {
 	const pProjectText = new projectInfo("project",projectToDisplay.formInputText);
 
 	sidebar.insertBefore(projectLabel, addProjectButton)
-		console.table(projectArray)
+	
 	}
+
+	export {displayProject}
