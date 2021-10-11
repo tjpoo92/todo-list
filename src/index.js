@@ -1,16 +1,15 @@
 import { addProjectForm } from "./modules/project-form.js";
 import { addTaskForm } from "./modules/task-form.js";
-import { modal } from "./modules/modal.js"
+import { modal } from "./modules/modal.js";
 
+const addProjectButton = document.querySelector(".add-project");
 
-const addProjectButton = document.querySelector(".add-project")
-
-addProjectButton.addEventListener("click", () => { 
+addProjectButton.addEventListener("click", () => {
 	modal.style.display = "block";
 	addProjectForm();
 });
 
-const addTaskButton = document.querySelector(".add-task")
+const addTaskButton = document.querySelector(".add-task");
 
 addTaskButton.addEventListener("click", () => {
 	modal.style.display = "block";
@@ -26,7 +25,6 @@ projects.addEventListener("click", () => {
 	collapseSidebar();
 	sidebar.classList.toggle("display");
 });
-
 
 function collapseSidebar() {
 	if (sidebar.classList.contains("display")) {
@@ -46,4 +44,4 @@ function collapseSidebar() {
 	}
 }
 
-export {sidebar, addProjectButton}
+export { sidebar, addProjectButton };
