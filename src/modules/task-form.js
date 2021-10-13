@@ -1,8 +1,6 @@
 import { closeModal, modalContent } from "./modal.js";
 import { displayTask } from "./task-func.js";
 
-let taskArray = [];
-
 const addTaskForm = () => {
 	const form = document.createElement("form");
 	form.setAttribute("action", "#");

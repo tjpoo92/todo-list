@@ -1,7 +1,7 @@
 import { closeModal, modalContent } from "./modal.js";
 import { displayProject } from "./project-func.js";
 
-let projectArray = [{ formInputText: "Default" }];
+let projectArray = [[{ formInputText: "Default" }]];
 
 function submitAddProjectForm() {
 	const formInputText = document.querySelector("#project-name").value;
