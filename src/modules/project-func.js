@@ -1,15 +1,21 @@
 import { sidebar, addProjectButton } from "../index.js";
+import {clearContent, displayTask} from "./task-func.js"
+import { taskArray } from "./task-form.js";
 
 function displayProject(projectToDisplay) {
 	const projectLabel = document.createElement("label");
+	
 
 	const projectInput = document.createElement("input");
 	projectInput.setAttribute("type", "radio");
 	projectInput.setAttribute("name", "radio-button");
 	projectInput.checked = true;
 	projectLabel.appendChild(projectInput);
+	
+	
 
 	const projectDiv = document.createElement("div");
+	
 	projectLabel.appendChild(projectDiv);
 
 	//TODO Randomize icon that will be showing
@@ -22,10 +28,14 @@ function displayProject(projectToDisplay) {
 	};
 	const pProjectText = new projectInfo(
 		"project",
-		projectToDisplay.formInputText
+		`${projectToDisplay}`
 	);
 
 	sidebar.insertBefore(projectLabel, addProjectButton);
+	clearContent();
+return projectDiv.addEventListener("click", displayTask(taskArray))
 }
+
+
 
 export { displayProject };

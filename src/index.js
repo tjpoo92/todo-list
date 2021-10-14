@@ -1,8 +1,10 @@
 import { addProjectForm } from "./modules/project-form.js";
-import { addTaskForm } from "./modules/task-form.js";
+import { addTaskForm, taskArray } from "./modules/task-form.js";
+import { displayTask } from "./modules/task-func.js"
 import { modal } from "./modules/modal.js";
 
 const addProjectButton = document.querySelector(".add-project");
+const content = document.querySelector(".content");
 
 addProjectButton.addEventListener("click", () => {
 	modal.style.display = "block";
@@ -44,4 +46,13 @@ function collapseSidebar() {
 	}
 }
 
-export { sidebar, addProjectButton };
+
+
+const selection = document.querySelectorAll("input[type='radio']")
+for (let i = 0; i < selection.length; i++) {
+	selection[i].addEventListener("click", displayTask(taskArray));
+	
+}
+
+
+export { sidebar, addProjectButton, content };

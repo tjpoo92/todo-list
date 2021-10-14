@@ -1,15 +1,34 @@
 import { addTaskForm } from "./task-form.js";
+import { content } from "../index.js";
+
+
+
+function clearContent() {
+	
+	while (content.hasChildNodes()) {
+		content.removeChild(content.firstChild)
+	}
+	return content;
+}
+
 
 function displayTask(taskToDisplay) {
-	const content = document.querySelector(".content");
+	const currentSelected = document.querySelector("input[type='radio']:checked").nextElementSibling.lastElementChild.innerText;
+	console.log("DISPLAY TASK IS BEING RAN")
+	// const content = document.querySelector(".content");
+	// while (content.hasChildNodes()) {
+	// 	content.removeChild(content.firstChild)
+	// }
+	taskToDisplay.forEach(element => {
+		if(element.projectSelected == currentSelected){
+
+
 	const subTaskDiv = document.createElement("div");
 	subTaskDiv.classList.add("sub-task");
 
 	const checkBox = document.createElement("input");
 	checkBox.setAttribute("type", "checkbox");
 	checkBox.setAttribute("name", "sub-task");
-	// remove if not needed, shouldn't be using ID on generic created node
-	// checkBox.setAttribute("id","sub-task")
 	subTaskDiv.appendChild(checkBox);
 
 	const subTaskInfo = function (classDef, text) {
@@ -20,11 +39,11 @@ function displayTask(taskToDisplay) {
 	};
 	const pTaskText = new subTaskInfo(
 		"sub-task-text",
-		taskToDisplay.formInputText
+		element.formInputText
 	);
 	const pTaskDueDate = new subTaskInfo(
 		"sub-task-due-date",
-		taskToDisplay.formDueDate
+		element.formDueDate
 	);
 
 	const ellipsis = document.createElement("i");
@@ -42,7 +61,7 @@ function displayTask(taskToDisplay) {
 	content.appendChild(subTaskDesc);
 
 	const descP = document.createElement("p");
-	descP.innerText = taskToDisplay.formTextArea;
+	descP.innerText = element.formTextArea;
 	subTaskDesc.appendChild(descP);
 
 	// TODO GET THIS SHIT WORKING, UNDERLINING
@@ -59,4 +78,7 @@ function displayTask(taskToDisplay) {
 	// 	}
 	// 	});
 }
-export { displayTask };
+
+});
+}
+export { displayTask, clearContent };

@@ -1,18 +1,21 @@
 import { closeModal, modalContent } from "./modal.js";
 import { displayProject } from "./project-func.js";
 
-let projectArray = [[{ formInputText: "Default" }]];
+let projectArray = ["Default"];
 
 function submitAddProjectForm() {
 	const formInputText = document.querySelector("#project-name").value;
 
 	const addProjectFactory = (formInputText) => {
-		return { formInputText };
+		const tempValue = formInputText
+		return tempValue;
 	};
 
 	const newProject = addProjectFactory(formInputText);
 
-	return projectArray.push(newProject);
+	projectArray.push(newProject)
+	
+	return console.log(projectArray);
 }
 
 const addProjectForm = () => {
@@ -43,7 +46,7 @@ const addProjectForm = () => {
 		event.preventDefault();
 		closeModal();
 		displayProject(
-			projectArray[projectArray.length == 0 ? 0 : projectArray.length - 1]
+			projectArray[projectArray.length - 1]
 		);
 	});
 };
