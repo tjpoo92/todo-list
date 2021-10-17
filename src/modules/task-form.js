@@ -1,5 +1,6 @@
 import { closeModal, modalContent } from "./modal.js";
 import { displayTask, clearContent } from "./task-func.js";
+import format from "../../node_modules/date-fns/format";
 
 let taskArray = [];
 
@@ -74,7 +75,9 @@ function submitAddTaskForm() {
 	const formPriority = document.querySelector("#priority").value;
 	const projectSelected = document.querySelector("input[type='radio']:checked")
 		.nextElementSibling.lastElementChild.innerText;
-
+	console.log(formDueDate);
+	formDueDate = format(new Date(formDueDate), "MM-dd-uu");
+	console.log(formDueDate);
 	const addTaskFactory = (
 		projectSelected,
 		formInputText,
