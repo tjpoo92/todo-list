@@ -9,14 +9,6 @@ function clearContent() {
 }
 
 function displayTask(taskToDisplay, currentSelected) {
-	// const currentSelected = document.querySelector("input[type='radio']:checked")
-	// 	.nextElementSibling.lastElementChild.innerText;
-	console.log(`Current selected is ${currentSelected}`);
-	console.log("DISPLAY TASK IS BEING RAN");
-	// const content = document.querySelector(".content");
-	// while (content.hasChildNodes()) {
-	// 	content.removeChild(content.firstChild)
-	// }
 	clearContent();
 	taskToDisplay.forEach((element) => {
 		if (element.projectSelected == currentSelected) {
