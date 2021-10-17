@@ -19,9 +19,3 @@ Interpreted:
 4. Modules
 5. UI needs: view all projects, view all TODO in project, expand a single TODO to see/edit, delete TODO
 6. Use localStorage
-
-Desired Enhancements:
-Use Firebase for cloudstorage
-    Firebase ([check it out!](https://firebase.google.com/docs/?authuser=0)) is an online database that can be set up relatively easily, allowing you to save your data to a server in the cloud! Teaching you how to use it is beyond the scope of this tutorial, but it is almost definitely within your skill set. If you're interested, check out [this video](https://www.youtube.com/watch?v=noB98K6A0TY) to see what it's all about.
-Change color platte
-    Fireship IO tutorial

@@ -59,12 +59,11 @@ const addTaskForm = () => {
 	modalContent.appendChild(form);
 
 	form.addEventListener("submit", (event) => {
-		submitAddTaskForm();
+		const projectSelected = submitAddTaskForm();
 		event.preventDefault();
 		closeModal();
 		clearContent();
-		displayTask(taskArray);
-		// displayTask(taskArray[taskArray.length == 0 ? 0 : taskArray.length - 1]);
+		displayTask(taskArray, projectSelected);
 	});
 };
 
@@ -101,7 +100,7 @@ function submitAddTaskForm() {
 	);
 	taskArray.push(newTask);
 
-	return console.log(taskArray);
+	return projectSelected;
 }
 
 export { addTaskForm, taskArray };
