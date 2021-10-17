@@ -1,7 +1,7 @@
 import { closeModal, modalContent } from "./modal.js";
 import { displayTask, clearContent } from "./task-func.js";
 
-let taskArray = []
+let taskArray = [];
 
 const addTaskForm = () => {
 	const form = document.createElement("form");
@@ -63,19 +63,18 @@ const addTaskForm = () => {
 		event.preventDefault();
 		closeModal();
 		clearContent();
-		displayTask(taskArray)
+		displayTask(taskArray);
 		// displayTask(taskArray[taskArray.length == 0 ? 0 : taskArray.length - 1]);
 	});
 };
-
-
 
 function submitAddTaskForm() {
 	const formInputText = document.querySelector("#task-name").value;
 	const formTextArea = document.querySelector("#task-description").value;
 	const formDueDate = document.querySelector("#due-date").value;
 	const formPriority = document.querySelector("#priority").value;
-	const projectSelected = document.querySelector("input[type='radio']:checked").nextElementSibling.lastElementChild.innerText;
+	const projectSelected = document.querySelector("input[type='radio']:checked")
+		.nextElementSibling.lastElementChild.innerText;
 
 	const addTaskFactory = (
 		projectSelected,
@@ -84,7 +83,13 @@ function submitAddTaskForm() {
 		formDueDate,
 		formPriority
 	) => {
-		return { projectSelected, formInputText, formTextArea, formDueDate, formPriority };
+		return {
+			projectSelected,
+			formInputText,
+			formTextArea,
+			formDueDate,
+			formPriority,
+		};
 	};
 
 	const newTask = addTaskFactory(
@@ -94,9 +99,9 @@ function submitAddTaskForm() {
 		formDueDate,
 		formPriority
 	);
-	taskArray.push(newTask)
-	
+	taskArray.push(newTask);
+
 	return console.log(taskArray);
 }
 
-export { addTaskForm, taskArray};
+export { addTaskForm, taskArray };

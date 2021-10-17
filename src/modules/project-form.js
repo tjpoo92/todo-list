@@ -7,14 +7,14 @@ function submitAddProjectForm() {
 	const formInputText = document.querySelector("#project-name").value;
 
 	const addProjectFactory = (formInputText) => {
-		const tempValue = formInputText
+		const tempValue = formInputText;
 		return tempValue;
 	};
 
 	const newProject = addProjectFactory(formInputText);
 
-	projectArray.push(newProject)
-	
+	projectArray.push(newProject);
+
 	return console.log(projectArray);
 }
 
@@ -45,9 +45,7 @@ const addProjectForm = () => {
 		submitAddProjectForm();
 		event.preventDefault();
 		closeModal();
-		displayProject(
-			projectArray[projectArray.length - 1]
-		);
+		displayProject(projectArray[projectArray.length - 1]);
 	});
 };
 
