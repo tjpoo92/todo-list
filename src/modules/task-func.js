@@ -1,4 +1,4 @@
-import { addTaskForm } from "./task-form.js";
+import { addTaskForm, taskArray } from "./task-form.js";
 import { content } from "../index.js";
 
 function clearContent() {
@@ -13,10 +13,7 @@ function displayTask(taskToDisplay, currentSelected) {
 	// 	.nextElementSibling.lastElementChild.innerText;
 	console.log(`Current selected is ${currentSelected}`);
 	console.log("DISPLAY TASK IS BEING RAN");
-	// const content = document.querySelector(".content");
-	// while (content.hasChildNodes()) {
-	// 	content.removeChild(content.firstChild)
-	// }
+
 	clearContent();
 	taskToDisplay.forEach((element) => {
 		if (element.projectSelected == currentSelected) {
@@ -42,10 +39,12 @@ function displayTask(taskToDisplay, currentSelected) {
 
 			const ellipsis = document.createElement("i");
 			ellipsis.classList.add("fas", "fa-ellipsis-h", "options");
+			ellipsis.addEventListener("click", editTask(`${pTaskText}`))
 			subTaskDiv.appendChild(ellipsis);
 
 			const trashCan = document.createElement("i");
 			trashCan.classList.add("fas", "fa-trash-alt", "trash");
+			trashCan.addEventListener("click", deleteTask(`${pTaskText}`, currentSelected))
 			subTaskDiv.appendChild(trashCan);
 
 			content.appendChild(subTaskDiv);
@@ -74,4 +73,16 @@ function displayTask(taskToDisplay, currentSelected) {
 		} else return;
 	});
 }
+
+function deleteTask(itemToDelete, currentSelected) {
+	const deleteItem = taskArray.indexOf(itemToDelete)
+	taskArray.splice(deleteItem, 1)
+	displayTask(taskArray, currentSelected);
+}
+
+function editTask(itemToEdit) {
+	const editItem = taskArray.indexOf(itemToEdit)
+	addTaskForm(taskArray[editItem])
+}
+
 export { displayTask, clearContent };

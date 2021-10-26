@@ -4,7 +4,7 @@ import format from "../../node_modules/date-fns/format";
 
 let taskArray = [];
 
-const addTaskForm = () => {
+const addTaskForm = (taskObject) => {
 	const form = document.createElement("form");
 	form.setAttribute("action", "#");
 	form.classList.add("task-form");
@@ -16,6 +16,7 @@ const addTaskForm = () => {
 	inputText.setAttribute("placeholder", "Task Name");
 	inputText.setAttribute("autocomplete", "off");
 	inputText.required = true;
+	inputText.value = taskObject.formInputText.value
 	form.appendChild(inputText);
 
 	const textarea = document.createElement("textarea");
@@ -23,6 +24,7 @@ const addTaskForm = () => {
 	textarea.setAttribute("id", "task-description");
 	textarea.setAttribute("row", "4");
 	textarea.setAttribute("placeholder", "Task Description");
+	textarea.value = taskObject.formTextArea.value
 	form.appendChild(textarea);
 
 	const br = document.createElement("br");
@@ -33,6 +35,7 @@ const addTaskForm = () => {
 	inputDate.setAttribute("name", "due-date");
 	inputDate.setAttribute("id", "due-date");
 	inputDate.required = true;
+	inputDate.value = taskObject.formDueDate.value
 	form.appendChild(inputDate);
 
 	const select = document.createElement("select");
