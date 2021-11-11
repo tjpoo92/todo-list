@@ -34,17 +34,20 @@ function displayTask(taskToDisplay, currentSelected) {
 			const pTaskText = new subTaskInfo("sub-task-text", element.formInputText);
 			const pTaskDueDate = new subTaskInfo(
 				"sub-task-due-date",
-				element.formDueDate
+				element.formattedFormDueDate
 			);
 
 			const ellipsis = document.createElement("i");
 			ellipsis.classList.add("fas", "fa-ellipsis-h", "options");
-			ellipsis.addEventListener("click", editTask(`${pTaskText}`))
+			ellipsis.addEventListener("click", editTask(`${pTaskText}`));
 			subTaskDiv.appendChild(ellipsis);
 
 			const trashCan = document.createElement("i");
 			trashCan.classList.add("fas", "fa-trash-alt", "trash");
-			trashCan.addEventListener("click", deleteTask(`${pTaskText}`, currentSelected))
+			trashCan.addEventListener(
+				"click",
+				deleteTask(`${pTaskText}`, currentSelected)
+			);
 			subTaskDiv.appendChild(trashCan);
 
 			content.appendChild(subTaskDiv);
@@ -75,14 +78,14 @@ function displayTask(taskToDisplay, currentSelected) {
 }
 
 function deleteTask(itemToDelete, currentSelected) {
-	const deleteItem = taskArray.indexOf(itemToDelete)
-	taskArray.splice(deleteItem, 1)
+	const deleteItem = taskArray.indexOf(itemToDelete);
+	taskArray.splice(deleteItem, 1);
 	displayTask(taskArray, currentSelected);
 }
 
 function editTask(itemToEdit) {
-	const editItem = taskArray.indexOf(itemToEdit)
-	addTaskForm(taskArray[editItem])
+	const editItem = taskArray.indexOf(itemToEdit);
+	addTaskForm(taskArray[editItem]);
 }
 
 export { displayTask, clearContent };

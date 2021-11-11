@@ -1,6 +1,7 @@
 import { closeModal, modalContent } from "./modal.js";
 import { displayTask, clearContent } from "./task-func.js";
 import format from "../../node_modules/date-fns/format";
+import { parseISO } from "date-fns";
 
 let taskArray = [];
 
@@ -16,7 +17,7 @@ const addTaskForm = (taskObject) => {
 	inputText.setAttribute("placeholder", "Task Name");
 	inputText.setAttribute("autocomplete", "off");
 	inputText.required = true;
-	inputText.value = taskObject.formInputText.value
+
 	form.appendChild(inputText);
 
 	const textarea = document.createElement("textarea");
@@ -24,7 +25,7 @@ const addTaskForm = (taskObject) => {
 	textarea.setAttribute("id", "task-description");
 	textarea.setAttribute("row", "4");
 	textarea.setAttribute("placeholder", "Task Description");
-	textarea.value = taskObject.formTextArea.value
+
 	form.appendChild(textarea);
 
 	const br = document.createElement("br");
@@ -35,7 +36,7 @@ const addTaskForm = (taskObject) => {
 	inputDate.setAttribute("name", "due-date");
 	inputDate.setAttribute("id", "due-date");
 	inputDate.required = true;
-	inputDate.value = taskObject.formDueDate.value
+
 	form.appendChild(inputDate);
 
 	const select = document.createElement("select");
@@ -69,6 +70,13 @@ const addTaskForm = (taskObject) => {
 		clearContent();
 		displayTask(taskArray, projectSelected);
 	});
+	if (taskObject == undefined) {
+		return;
+	} else {
+		inputText.value = taskObject.formInputText.value;
+		textarea.value = taskObject.formTextArea.value;
+		inputDate.value = taskObject.formDueDate.value;
+	}
 };
 
 function submitAddTaskForm() {
@@ -78,21 +86,20 @@ function submitAddTaskForm() {
 	const formPriority = document.querySelector("#priority").value;
 	const projectSelected = document.querySelector("input[type='radio']:checked")
 		.nextElementSibling.lastElementChild.innerText;
-	console.log(formDueDate);
-	formDueDate = format(new Date(formDueDate), "MM-dd-uu");
-	console.log(formDueDate);
+	const formattedFormDueDate = format(parseISO(formDueDate), "MM-dd-uu");
+
 	const addTaskFactory = (
 		projectSelected,
 		formInputText,
 		formTextArea,
-		formDueDate,
+		formattedFormDueDate,
 		formPriority
 	) => {
 		return {
 			projectSelected,
 			formInputText,
 			formTextArea,
-			formDueDate,
+			formattedFormDueDate,
 			formPriority,
 		};
 	};
@@ -101,7 +108,7 @@ function submitAddTaskForm() {
 		projectSelected,
 		formInputText,
 		formTextArea,
-		formDueDate,
+		formattedFormDueDate,
 		formPriority
 	);
 	taskArray.push(newTask);
