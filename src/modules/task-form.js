@@ -65,17 +65,19 @@ const addTaskForm = (taskObject) => {
 
 	form.addEventListener("submit", (event) => {
 		const projectSelected = submitAddTaskForm();
+		const taskToDisplay = projectSelected[1];
+		const currentSelected = projectSelected[0];
 		event.preventDefault();
 		closeModal();
 		clearContent();
-		displayTask(taskArray, projectSelected);
+		displayTask(taskToDisplay, currentSelected);
 	});
 	if (taskObject == undefined) {
 		return;
 	} else {
-		inputText.value = taskObject.formInputText.value;
-		textarea.value = taskObject.formTextArea.value;
-		inputDate.value = taskObject.formDueDate.value;
+		inputText.value = taskObject.formInputText;
+		//TODO doesn't work properly with duplicate forminputtext might need UUID
+		textarea.value = taskObject.formTextArea;
 	}
 };
 
@@ -87,7 +89,7 @@ function submitAddTaskForm() {
 	const projectSelected = document.querySelector("input[type='radio']:checked")
 		.nextElementSibling.lastElementChild.innerText;
 	const formattedFormDueDate = format(parseISO(formDueDate), "MM-dd-uu");
-
+	console.log(formDueDate);
 	const addTaskFactory = (
 		projectSelected,
 		formInputText,
@@ -111,9 +113,10 @@ function submitAddTaskForm() {
 		formattedFormDueDate,
 		formPriority
 	);
+
 	taskArray.push(newTask);
 
-	return projectSelected;
+	return [projectSelected, taskArray];
 }
 
 export { addTaskForm, taskArray };

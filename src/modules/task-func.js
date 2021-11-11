@@ -1,5 +1,6 @@
 import { addTaskForm, taskArray } from "./task-form.js";
 import { content } from "../index.js";
+import { modal } from "./modal.js";
 
 function clearContent() {
 	while (content.hasChildNodes()) {
@@ -9,8 +10,6 @@ function clearContent() {
 }
 
 function displayTask(taskToDisplay, currentSelected) {
-	// const currentSelected = document.querySelector("input[type='radio']:checked")
-	// 	.nextElementSibling.lastElementChild.innerText;
 	console.log(`Current selected is ${currentSelected}`);
 	console.log("DISPLAY TASK IS BEING RAN");
 
@@ -39,15 +38,25 @@ function displayTask(taskToDisplay, currentSelected) {
 
 			const ellipsis = document.createElement("i");
 			ellipsis.classList.add("fas", "fa-ellipsis-h", "options");
-			ellipsis.addEventListener("click", editTask(`${pTaskText}`));
+			ellipsis.addEventListener("click", editTask);
 			subTaskDiv.appendChild(ellipsis);
+
+			function editTask() {
+				const editItem = taskToDisplay
+					.map((x) => x.formInputText)
+					.indexOf(element.formInputText);
+				// TODO needs to call delete
+				console.log("editTask is running!");
+				modal.style.display = "block";
+				addTaskForm(taskToDisplay[editItem]);
+			}
 
 			const trashCan = document.createElement("i");
 			trashCan.classList.add("fas", "fa-trash-alt", "trash");
-			trashCan.addEventListener(
-				"click",
-				deleteTask(`${pTaskText}`, currentSelected)
-			);
+			// trashCan.addEventListener(
+			// 	"click",
+			// 	deleteTask(`${pTaskText}`, currentSelected)
+			// );
 			subTaskDiv.appendChild(trashCan);
 
 			content.appendChild(subTaskDiv);
@@ -77,15 +86,18 @@ function displayTask(taskToDisplay, currentSelected) {
 	});
 }
 
-function deleteTask(itemToDelete, currentSelected) {
-	const deleteItem = taskArray.indexOf(itemToDelete);
-	taskArray.splice(deleteItem, 1);
-	displayTask(taskArray, currentSelected);
-}
+// function deleteTask(itemToDelete, currentSelected) {
+// 	const deleteItem = taskArray.indexOf(itemToDelete);
+// 	taskArray.splice(deleteItem, 1);
+// 	displayTask(taskArray, currentSelected);
+// }
 
-function editTask(itemToEdit) {
-	const editItem = taskArray.indexOf(itemToEdit);
-	addTaskForm(taskArray[editItem]);
+function editTask() {
+	const editItem = taskToDisplay.indexOf(`${pTaskText}`);
+	addTaskForm(taskToDisplay[editItem]);
+	console.log("editTask is running!");
+	console.log(taskToDisplay);
+	console.log(editItem);
 }
 
 export { displayTask, clearContent };
