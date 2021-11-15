@@ -42,9 +42,7 @@ function displayTask(taskToDisplay, currentSelected) {
 			subTaskDiv.appendChild(ellipsis);
 
 			function editTask() {
-				const editItem = taskToDisplay
-					.map((x) => x.formInputText)
-					.indexOf(element.formInputText);
+				const editItem = taskToDisplay.map((x) => x.UUID).indexOf(element.UUID);
 				// TODO needs to call delete
 				console.log("editTask is running!");
 				modal.style.display = "block";
@@ -69,7 +67,7 @@ function displayTask(taskToDisplay, currentSelected) {
 			descP.innerText = element.formTextArea;
 			subTaskDesc.appendChild(descP);
 
-			// TODO GET THIS SHIT WORKING, UNDERLINING
+			// TODO GET THIS SHIT WORKING, LINE-THROUGH
 			// refactor into own function, add trash and setting functionality
 			// const subTask = document.querySelectorAll(".sub-task");
 			// const subTaskText = document.querySelectorAll(".sub-task-text");
@@ -91,13 +89,5 @@ function displayTask(taskToDisplay, currentSelected) {
 // 	taskArray.splice(deleteItem, 1);
 // 	displayTask(taskArray, currentSelected);
 // }
-
-function editTask() {
-	const editItem = taskToDisplay.indexOf(`${pTaskText}`);
-	addTaskForm(taskToDisplay[editItem]);
-	console.log("editTask is running!");
-	console.log(taskToDisplay);
-	console.log(editItem);
-}
 
 export { displayTask, clearContent };
