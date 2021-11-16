@@ -77,7 +77,6 @@ const addTaskForm = (taskObject) => {
 		return;
 	} else {
 		inputText.value = taskObject.formInputText;
-		//TODO doesn't work properly with duplicate forminputtext might need UUID
 		textarea.value = taskObject.formTextArea;
 	}
 };

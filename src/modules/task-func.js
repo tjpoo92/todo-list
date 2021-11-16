@@ -43,26 +43,27 @@ function displayTask(taskToDisplay, currentSelected) {
 
 			function editTask() {
 				const editItem = taskToDisplay.map((x) => x.UUID).indexOf(element.UUID);
-				// TODO needs to call delete
+
 				console.log("editTask is running!");
 				modal.style.display = "block";
+
 				addTaskForm(taskToDisplay[editItem]);
+				deleteTask();
 			}
 			function deleteTask() {
-				const deleteItem = taskToDisplay.map((x) => x.UUID).indexOf(element.UUID);
-				console.log(deleteItem)
+				const deleteItem = taskToDisplay
+					.map((x) => x.UUID)
+					.indexOf(element.UUID);
+				console.log(deleteItem);
 				taskArray.splice(deleteItem, 1);
-				console.log(taskArray)
-				console.log(currentSelected)
+				console.log(taskArray);
+				console.log(currentSelected);
 				displayTask(taskArray, currentSelected);
 			}
 
 			const trashCan = document.createElement("i");
 			trashCan.classList.add("fas", "fa-trash-alt", "trash");
-			trashCan.addEventListener(
-				"click",
-				deleteTask
-			);
+			trashCan.addEventListener("click", deleteTask);
 			subTaskDiv.appendChild(trashCan);
 
 			content.appendChild(subTaskDiv);
@@ -74,24 +75,8 @@ function displayTask(taskToDisplay, currentSelected) {
 			const descP = document.createElement("p");
 			descP.innerText = element.formTextArea;
 			subTaskDesc.appendChild(descP);
-
-			// TODO GET THIS SHIT WORKING, LINE-THROUGH
-			// refactor into own function, add trash and setting functionality
-			// const subTask = document.querySelectorAll(".sub-task");
-			// const subTaskText = document.querySelectorAll(".sub-task-text");
-			// for (let i = 0; i < subTask.length; i++) {
-			// 	subTask[i].addEventListener("click", () => {
-			// 		console.log(subTask[i])
-			// if (subTask[i].checked == true) {
-			// 		subTaskText[i].style.textDecoration = "line-through";
-			// 	} else {
-			// 		subTaskText[i].style.textDecoration = "none";
-			// 	}
-			// 	});
 		} else return;
 	});
 }
-
-
 
 export { displayTask, clearContent };
