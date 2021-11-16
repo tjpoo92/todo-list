@@ -10,9 +10,6 @@ function clearContent() {
 }
 
 function displayTask(taskToDisplay, currentSelected) {
-	console.log(`Current selected is ${currentSelected}`);
-	console.log("DISPLAY TASK IS BEING RAN");
-
 	clearContent();
 	taskToDisplay.forEach((element) => {
 		if (element.projectSelected == currentSelected) {
@@ -43,10 +40,7 @@ function displayTask(taskToDisplay, currentSelected) {
 
 			function editTask() {
 				const editItem = taskToDisplay.map((x) => x.UUID).indexOf(element.UUID);
-
-				console.log("editTask is running!");
 				modal.style.display = "block";
-
 				addTaskForm(taskToDisplay[editItem]);
 				deleteTask();
 			}
@@ -54,10 +48,7 @@ function displayTask(taskToDisplay, currentSelected) {
 				const deleteItem = taskToDisplay
 					.map((x) => x.UUID)
 					.indexOf(element.UUID);
-				console.log(deleteItem);
 				taskArray.splice(deleteItem, 1);
-				console.log(taskArray);
-				console.log(currentSelected);
 				displayTask(taskArray, currentSelected);
 			}
 

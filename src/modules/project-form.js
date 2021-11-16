@@ -15,7 +15,7 @@ function submitAddProjectForm() {
 
 	projectArray.push(newProject);
 
-	return console.log(projectArray);
+	return;
 }
 
 const addProjectForm = () => {
