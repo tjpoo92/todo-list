@@ -48,13 +48,21 @@ function displayTask(taskToDisplay, currentSelected) {
 				modal.style.display = "block";
 				addTaskForm(taskToDisplay[editItem]);
 			}
+			function deleteTask() {
+				const deleteItem = taskToDisplay.map((x) => x.UUID).indexOf(element.UUID);
+				console.log(deleteItem)
+				taskArray.splice(deleteItem, 1);
+				console.log(taskArray)
+				console.log(currentSelected)
+				displayTask(taskArray, currentSelected);
+			}
 
 			const trashCan = document.createElement("i");
 			trashCan.classList.add("fas", "fa-trash-alt", "trash");
-			// trashCan.addEventListener(
-			// 	"click",
-			// 	deleteTask(`${pTaskText}`, currentSelected)
-			// );
+			trashCan.addEventListener(
+				"click",
+				deleteTask
+			);
 			subTaskDiv.appendChild(trashCan);
 
 			content.appendChild(subTaskDiv);
@@ -84,10 +92,6 @@ function displayTask(taskToDisplay, currentSelected) {
 	});
 }
 
-// function deleteTask(itemToDelete, currentSelected) {
-// 	const deleteItem = taskArray.indexOf(itemToDelete);
-// 	taskArray.splice(deleteItem, 1);
-// 	displayTask(taskArray, currentSelected);
-// }
+
 
 export { displayTask, clearContent };
