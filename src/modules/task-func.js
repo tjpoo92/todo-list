@@ -25,8 +25,19 @@ function displayTask(taskToDisplay, currentSelected) {
 				const tempPara = document.createElement("p");
 				tempPara.classList.add(classDef);
 				tempPara.innerText = text;
+				tempPara.style.backgroundColor = taskPriority();
 				subTaskDiv.appendChild(tempPara);
 			};
+			function taskPriority() {
+				switch (element.formPriority) {
+					case "Low":
+						return "#66ff66";
+					case "Medium":
+						return "#ffff66";
+					case "High":
+						return "#ff6666";
+				}
+			}
 			const pTaskText = new subTaskInfo("sub-task-text", element.formInputText);
 			const pTaskDueDate = new subTaskInfo(
 				"sub-task-due-date",
