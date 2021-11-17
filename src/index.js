@@ -3,6 +3,7 @@ import { addTaskForm, taskArray } from "./modules/task-form.js";
 import { modal } from "./modules/modal.js";
 import { collapseSidebar } from "./modules/navbar-func.js";
 import { displayTask, clearContent } from "./modules/task-func.js";
+import { loadLocalStorage } from "./modules/local-storage.js";
 
 const addProjectButton = document.querySelector(".add-project");
 const content = document.querySelector(".content");
@@ -32,5 +33,7 @@ projects.addEventListener("click", () => {
 	collapseSidebar();
 	sidebar.classList.toggle("display");
 });
+
+loadLocalStorage();
 
 export { addProjectButton, content, sidebar };

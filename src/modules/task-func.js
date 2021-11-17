@@ -1,6 +1,7 @@
 import { addTaskForm, taskArray } from "./task-form.js";
 import { content } from "../index.js";
 import { modal } from "./modal.js";
+import { saveToLocalStorage } from "./local-storage.js";
 
 function clearContent() {
 	while (content.hasChildNodes()) {
@@ -28,11 +29,11 @@ function displayTask(taskToDisplay, currentSelected) {
 					.indexOf(element.UUID);
 				if (taskToDisplay[selectedItem].completedStatus == "false") {
 					taskToDisplay[selectedItem].completedStatus = "true";
-					// saveToLocalStorage();
+					saveToLocalStorage();
 					lineThrough();
 				} else if (taskToDisplay[selectedItem].completedStatus == "true") {
 					taskToDisplay[selectedItem].completedStatus = "false";
-					// saveToLocalStorage();
+					saveToLocalStorage();
 					lineThrough();
 				}
 			}
@@ -106,6 +107,7 @@ function displayTask(taskToDisplay, currentSelected) {
 					.map((x) => x.UUID)
 					.indexOf(element.UUID);
 				taskArray.splice(deleteItem, 1);
+				saveToLocalStorage();
 				displayTask(taskArray, currentSelected);
 			}
 
@@ -124,6 +126,7 @@ function displayTask(taskToDisplay, currentSelected) {
 			descP.innerText = element.formTextArea;
 			subTaskDesc.appendChild(descP);
 			lineThrough();
+			saveToLocalStorage();
 		} else return;
 	});
 }
