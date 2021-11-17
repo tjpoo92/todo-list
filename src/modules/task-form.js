@@ -89,12 +89,14 @@ function submitAddTaskForm() {
 	const projectSelected = document.querySelector("input[type='radio']:checked")
 		.nextElementSibling.lastElementChild.innerText;
 	const formattedFormDueDate = format(parseISO(formDueDate), "MM-dd-uu");
+	const completedStatus = "false";
 	const addTaskFactory = (
 		projectSelected,
 		formInputText,
 		formTextArea,
 		formattedFormDueDate,
 		formPriority,
+		completedStatus,
 		UUID
 	) => {
 		return {
@@ -103,6 +105,7 @@ function submitAddTaskForm() {
 			formTextArea,
 			formattedFormDueDate,
 			formPriority,
+			completedStatus,
 			UUID,
 		};
 	};
@@ -113,6 +116,7 @@ function submitAddTaskForm() {
 		formTextArea,
 		formattedFormDueDate,
 		formPriority,
+		completedStatus,
 		uuidv1()
 	);
 
