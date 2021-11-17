@@ -4,6 +4,7 @@ import { modal } from "./modules/modal.js";
 import { collapseSidebar } from "./modules/navbar-func.js";
 import { displayTask, clearContent } from "./modules/task-func.js";
 import { loadLocalStorage, taskArray } from "./modules/local-storage.js";
+import { clearSideBar } from "./modules/project-func.js";
 
 const addProjectButton = document.querySelector(".add-project");
 const content = document.querySelector(".content");
@@ -23,6 +24,7 @@ addTaskButton.addEventListener("click", () => {
 const defaultProject = document.querySelector("#default");
 defaultProject.addEventListener("click", () => {
 	clearContent();
+	clearSideBar();
 	displayTask(taskArray, "Default");
 });
 

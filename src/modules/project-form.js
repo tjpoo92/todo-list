@@ -1,7 +1,6 @@
+import { saveToLocalStorage, projectArray } from "./local-storage.js";
 import { closeModal, modalContent } from "./modal.js";
 import { displayProject } from "./project-func.js";
-
-let projectArray = ["Default"];
 
 function submitAddProjectForm() {
 	const formInputText = document.querySelector("#project-name").value;
@@ -14,7 +13,7 @@ function submitAddProjectForm() {
 	const newProject = addProjectFactory(formInputText);
 
 	projectArray.push(newProject);
-
+	saveToLocalStorage();
 	return;
 }
 
@@ -45,7 +44,7 @@ const addProjectForm = () => {
 		submitAddProjectForm();
 		event.preventDefault();
 		closeModal();
-		displayProject(projectArray[projectArray.length - 1]);
+		displayProject(projectArray);
 	});
 };
 
