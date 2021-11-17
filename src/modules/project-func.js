@@ -1,6 +1,6 @@
 import { addProjectButton, sidebar } from "../index.js";
 import { clearContent, displayTask } from "./task-func.js";
-import { taskArray } from "./task-form.js";
+import { taskArray } from "./local-storage";
 
 let i = 0;
 

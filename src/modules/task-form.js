@@ -1,10 +1,9 @@
 import { closeModal, modalContent } from "./modal.js";
 import { displayTask, clearContent } from "./task-func.js";
 import format from "../../node_modules/date-fns/format";
+import { taskArray } from "./local-storage";
 import { parseISO } from "date-fns";
 import { v1 as uuidv1 } from "uuid";
-
-let taskArray = [];
 
 const addTaskForm = (taskObject) => {
 	const form = document.createElement("form");
@@ -125,4 +124,4 @@ function submitAddTaskForm() {
 	return [projectSelected, taskArray];
 }
 
-export { addTaskForm, taskArray };
+export { addTaskForm };

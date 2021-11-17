@@ -1,12 +1,13 @@
-import { taskArray } from "./task-form";
 import { displayTask } from "./task-func";
 
+let taskArray;
+
 function loadLocalStorage() {
-	let tempTaskArray = JSON.parse(localStorage.getItem("taskArray"));
-	if (tempTaskArray == null) {
-		return;
+	taskArray = JSON.parse(localStorage.getItem("taskArray"));
+	if (taskArray == null) {
+		taskArray = [];
 	} else {
-		displayTask(tempTaskArray, "Default");
+		displayTask(taskArray, "Default");
 	}
 }
 
@@ -14,4 +15,4 @@ function saveToLocalStorage() {
 	localStorage.setItem("taskArray", JSON.stringify(taskArray));
 }
 
-export { loadLocalStorage, saveToLocalStorage };
+export { loadLocalStorage, saveToLocalStorage, taskArray };

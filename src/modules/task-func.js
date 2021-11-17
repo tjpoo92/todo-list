@@ -1,7 +1,7 @@
-import { addTaskForm, taskArray } from "./task-form.js";
+import { addTaskForm } from "./task-form.js";
 import { content } from "../index.js";
 import { modal } from "./modal.js";
-import { saveToLocalStorage } from "./local-storage.js";
+import { saveToLocalStorage, taskArray } from "./local-storage.js";
 
 function clearContent() {
 	while (content.hasChildNodes()) {
