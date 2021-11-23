@@ -1,23 +1,20 @@
 import { addProjectButton, sidebar } from "../index.js";
 import { clearContent, displayTask } from "./task-func.js";
-import { taskArray } from "./local-storage";
+import { projectArray, taskArray } from "./local-storage";
 
 let i = 0;
 
 function clearSideBar() {
-	while (
-		sidebar.hasChildNodes() &&
-		sidebar.lastElementChild.firstElementChild.className !==
-			"default-project" &&
-		sidebar.lastElementChild.firstElementChild.className !== "i-project"
-	) {
-		console.log(sidebar.lastElementChild.firstElementChild.className);
-		sidebar.removeChild(sidebar.lastChild);
+	const sidebarNodes = document.querySelectorAll("label");
+	console.log(sidebarNodes);
+	for (let i = 1; i < sidebarNodes.length; i++) {
+		sidebar.removeChild(sidebarNodes[i]);
 	}
 	return sidebar;
 }
 
 function displayProject(projectToDisplay) {
+	clearSideBar();
 	const iconArray = [
 		"fa-apple-alt",
 		"fa-store-alt",

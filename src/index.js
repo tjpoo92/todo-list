@@ -24,7 +24,6 @@ addTaskButton.addEventListener("click", () => {
 const defaultProject = document.querySelector("#default");
 defaultProject.addEventListener("click", () => {
 	clearContent();
-	clearSideBar();
 	displayTask(taskArray, "Default");
 });
 
